@@ -51,9 +51,9 @@ export default {
   },
   methods: {
     loadMap () {
-      $(document).ready(function() {
+      // $(document).ready(function() {
 				var mapplic = $('#mapplic').mapplic({
-					source: '/static/mall.json',
+					source: 'C:\\map-data\\mall.json',
           height: 840,
 					sidebar: true,
 					minimap: true,
@@ -73,7 +73,7 @@ export default {
 				$('.editor-window .window-mockup').click(function() {
 					$('.editor-window').slideUp(200);
 				});
-			});
+			// });
     }
   }
 }
