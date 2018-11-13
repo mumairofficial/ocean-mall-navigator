@@ -4,7 +4,7 @@
       <div class="flex justify-between">
         <div class="px-8 py-6">
           <router-link to="/">
-            <img src="~@/assets/oceanmall-logo.png" alt="ocean-mall">
+            <img src="~@/assets/oceanmall-logo.svg" style="width: 30%" alt="ocean-mall">
           </router-link>
         </div>
         <div style="width: 400px;" class="text-right">

@@ -9,7 +9,7 @@
       <div class="flex flex-col justify-between">
         <div class="text-3xl text-grey-light">
           <div class="px-8 py-6">
-            <img src="~@/assets/oceanmall-logo.png" alt="ocean-mall">
+            <img src="~@/assets/oceanmall-logo.svg" style="width: 40%" alt="ocean-mall">
           </div>
         </div>
 
