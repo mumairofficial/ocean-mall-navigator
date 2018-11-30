@@ -7,7 +7,7 @@ import store from './store'
 
 import '@/assets/css/style.css'
 import '@/assets/css/map.css'
-import '@/assets/mapplic/mapplic.css'
+// import '@/assets/mapplic/mapplic.css'
 
 import '@/assets/js/jquery.min.js'
 import '@/assets/js/hammer.min.js'
