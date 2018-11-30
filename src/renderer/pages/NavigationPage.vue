@@ -53,7 +53,7 @@ export default {
     loadMap () {
       // $(document).ready(function() {
 				var mapplic = $('#mapplic').mapplic({
-					source: 'C:\\map-data\\mall.json',
+					source: 'http://gfinder.genislab.com/api/customers/1/display/1/configurations',
           height: 840,
 					sidebar: true,
 					minimap: true,
