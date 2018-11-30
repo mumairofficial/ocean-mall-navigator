@@ -56,9 +56,10 @@ export default {
 					source: 'http://gfinder.genislab.com/api/customers/1/display/1/configurations',
           height: 840,
 					sidebar: true,
-					minimap: true,
+					minimap: false,
 					markers: false,
-					fullscreen: true,
+          fullscreen: true,
+          lightbox: false,
 					hovertip: true,
 					developer: true,
 					maxscale: 3

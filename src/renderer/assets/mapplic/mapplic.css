@@ -1,50 +1,31 @@
 /*
  * Mapplic - Custom Interactive Map Plugin by @sekler
- * Version 3.1
- * http://www.mapplic.com
+ * Version 4.2
+ * http://www.mapplic.com/
  */
 
-.mapplic-element a {
-	color: #333;
-	text-decoration: none !important;
+ .mapplic-element {
+	font-size: 0;
+	height: 420px;
 }
 
 .mapplic-element input,
-.mapplic-element button {
+.mapplic-element button,
+.mapplic-element a,
+.mapplic-element a:hover,
+.mapplic-element a:active,
+.mapplic-element a:focus {
 	outline: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
 }
 
-.mapplic-element * { -webkit-tap-highlight-color: rgba(0,0,0,0); }
-
-.mapplic-element {
-	background-color: #fff;
-	font-size: 0;
-	overflow: hidden;
-}
-
-/* Fullscreen */
-:-webkit-full-screen {
-	width: 100%;
-	height: 100% !important;
-}
-
-:-webkit-full-screen .mapplic-fullscreen-button {
-	background-image: url(images/fullscreen-exit.png);
-}
-
-/* Preloader */
-.mapplic-element.mapplic-loading {
-	background: #f4f4f4 url(images/loader.gif) no-repeat center;
-}
-
-.mapplic-element.mapplic-error {
-	background: #f4f4f4 url(images/error-icon.png) no-repeat center;
-}
+/* Preloader & Error */
+.mapplic-element.mapplic-loading { background: url(../images/loader.gif) no-repeat center; }
+.mapplic-element.mapplic-error { background: url(../images/error-icon.png) no-repeat center; }
 
 .mapplic-element > * {
 	opacity: 1;
-	-webkit-transition: opacity 0.6s;
-	-moz-transition: opacity 0.6s;
 	transition: opacity 0.6s;
 }
 
@@ -52,18 +33,13 @@
 	opacity: 0;
 }
 
-/* Main elements */
+/* Map container */
 .mapplic-container {
-	background-color: #f8f8f8;
 	display: inline-block;
 	overflow: hidden;
 	position: relative;
 	width: 70%;
 	height: 100%;
-}
-
-:-webkit-full-screen .mapplic-container {
-	width: 80%;
 }
 
 .mapplic-map {
@@ -74,22 +50,19 @@
 }
 
 /* Map layer */
+.mapplic-layer img {
+	width: 100%;
+}
+
+/* IE Fix */
 .mapplic-layer {
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
 	position: absolute;
 }
 
-.mapplic-layer img {
-	width: 100%;
-}
-
 .mapplic-map .mapplic-map-image {
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
 	-webkit-touch-callout: none;
@@ -99,60 +72,186 @@
 	-ms-user-select: none;
 	user-select: none;
 }
+/* IE Fix END */
 
 .mapplic-map.mapplic-zoomable .mapplic-map-image {
-	cursor: url(images/openhand.cur), default;
+	cursor: url(../images/openhand.cur), default;
 }
 
 .mapplic-map.mapplic-zoomable.mapplic-dragging .mapplic-map-image {
-	cursor: url(images/closedhand.cur), move;
+	cursor: url(../images/closedhand.cur), move;
 }
 
-.mapplic-locations {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
+/* Pin types */
 .mapplic-pin {
-	background-image: url(images/pin.png);
+	background-image: url(../images/pin.png);
 	background-size: 18px 24px;
 	background-repeat: no-repeat;
 	background-position: center;
+	font-size: 0;
 	width: 18px;
 	height: 24px;
 	margin-top: -23px;
 	margin-left: -9px;
 	position: absolute;
+	-webkit-transition: background-color 0.2s, border-color 0.2s;
+	-moz-transition: background-color 0.2s, border-color 0.2s;
+	transition: background-color 0.2s, border-color 0.2s;
 }
 
-.mapplic-pin.iconpin {
-	background-image: url(images/pin-large.png);
-	background-size: 30px 42px;
-	color: #fff;
-	font-size: 14px;
-	font-weight: normal;
-	line-height: 36px;
-	text-align: center;
-	width: 30px;
-	height: 42px;
-	margin-top: -42px;
-	margin-left: -15px;
+/* New pin types */
+.mapplic-pin.pin-classic {
+	background-color: #f23543;
+	background-image: none;
+	border-color: #f23543;
+	border-radius: 10px;
+	line-height: 22px !important;
+	width: 20px;
+	height: 20px;
+	margin-top: -25px;
+	margin-left: -10px;
 }
 
-.mapplic-pin.orange { background-image: url(images/pin-orange.png); }
-.mapplic-pin.yellow { background-image: url(images/pin-yellow.png); }
-.mapplic-pin.green { background-image: url(images/pin-green.png); }
-.mapplic-pin.blue { background-image: url(images/pin-blue.png); }
-.mapplic-pin.purple { background-image: url(images/pin-purple.png); }
+.mapplic-pin.pin-classic:before {
+	border-style: solid;
+	border-width: 9px 8px 0 8px;
+	border-color: inherit;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	content: '';
+	display: block;
+	position: absolute;
+	top: 16px;
+	left: 2px;
+}
 
-.mapplic-pin.iconpin.orange { background-image: url(images/pin-orange-large.png); }
-.mapplic-pin.iconpin.yellow { background-image: url(images/pin-yellow-large.png); }
-.mapplic-pin.iconpin.green { background-image: url(images/pin-green-large.png); }
-.mapplic-pin.iconpin.blue { background-image: url(images/pin-blue-large.png); }
-.mapplic-pin.iconpin.purple { background-image: url(images/pin-purple-large.png); }
+.mapplic-pin:before {
+	box-sizing: content-box !important;
+}
+
+.mapplic-pin.pin-marker {
+	background-color: #fdca2a;
+	background-image: none;
+	border-color: #fdca2a;
+	border-radius: 8px;
+	width: 16px;
+	height: 16px;
+	margin-top: -8px;
+	margin-left: -8px;
+}
+
+.mapplic-pin.pin-marker:before {
+	border-color: inherit;
+	border-style: solid;
+	border-width: 6px;
+	border-radius: 16px;
+	content: '';
+	display: block;
+	opacity: 0.4;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	left: -6px;
+	top: -6px;
+}
+
+.mapplic-pin.pin-disk {
+	background-color: white !important;
+	background-image: none;
+	border-color: #f19819;
+	border-radius: 8px;
+	color: #333 !important;
+	width: 16px;
+	height: 16px;
+	margin-top: -8px;
+	margin-left: -8px;
+}
+
+.mapplic-pin.pin-disk:before {
+	border-color: inherit;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 16px;
+	content: '';
+	display: block;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	left: -3px;
+	top: -3px;
+}
+
+.mapplic-pin.pin-ribbon {
+	background-color: #46b450;
+	background-image: none;
+	border-color: #46b450;
+	border-radius: 2px 2px 2px 0;
+	height: 16px;
+	min-width: 10px;
+	width: auto;
+	padding: 0 3px;
+	margin-top: -20px;
+	margin-left: -8px;
+}
+
+.mapplic-pin.pin-ribbon:after {
+	border-style: solid;
+	border-width: 0 8px 4px 0;
+	border-color: transparent rgba(0, 0, 0, 0.5) transparent transparent;
+	content: '';
+	display: block;
+	position: absolute;
+	top: 16px;
+	left: 0px;
+}
+
+.mapplic-pin.pin-ribbon:before {
+	border-style: solid;
+	border-width: 0 8px 4px 0;
+	border-color: inherit;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	content: '';
+	display: block;
+	position: absolute;
+	top: 16px;
+	left: 0px;
+}
+
+.mapplic-pin.pin-dot {
+	background-color: transparent !important;
+	background-image: none;
+	border-color: #29afa1;
+	color: #333 !important;
+	height: 16px;
+	min-width: 10px;
+	width: auto;
+	padding: 0 3px;
+	margin-left: 4px;
+	margin-top: -8px;
+}
+
+.mapplic-pin.pin-dot:before {
+	border-color: inherit;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 12px;
+	content: '';
+	display: block;
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	top: 5px;
+	left: -7px;
+}
+
+.mapplic-pin.orange { background-image: url(../images/pin-orange.png); }
+.mapplic-pin.yellow { background-image: url(../images/pin-yellow.png); }
+.mapplic-pin.green { background-image: url(../images/pin-green.png); }
+.mapplic-pin.blue { background-image: url(../images/pin-blue.png); }
+.mapplic-pin.purple { background-image: url(../images/pin-purple.png); }
 
 .mapplic-pin.circular {
 	background-image: none;
@@ -165,9 +264,18 @@
 	margin-top: -6px;
 }
 
+.mapplic-pin.circle {
+	background: none !important;
+	border: 2px solid #fb7575;
+	width: 8px;
+	height: 8px;
+	margin-left: -6px;
+	margin-top: -6px;
+}
+
 .mapplic-pin.transparent {
 	background-image: none;
-	background-color: #fb7575;
+	background-color: #795ecd;
 	border-radius: 10px;
 	width: 20px;
 	height: 20px;
@@ -176,24 +284,72 @@
 	opacity: 0.5 !important;
 }
 
-.mapplic-pin.mapplic-animate {
-	-webkit-animation: bounce-in 0.4s forwards;
-	animation: bounce-in 0.4s forwards;
+.mapplic-pin.pin-label {
+	color: #fff;
+	font-size: 9px;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	line-height: 16px;
 }
 
-@-webkit-keyframes bounce-in {
-	0%   {margin-top: -120px; opacity: 0;}
-	33%  {margin-top: -25px; opacity: 1;}
-	66%  {margin-top: -30px;}
-	100% {margin-top: -23px; opacity: 1;}
+.mapplic-pin.pin-label:visited {
+	color: #fff;
+}
+
+.mapplic-pin.pin-md {
+	border-radius: 50%;
+	margin-left: -10px;
+	margin-top: -10px;
+	line-height: 20px;
+	width: 20px;
+	height: 20px;
+}
+
+.mapplic-pin.pin-lg {
+	border-radius: 50%;
+	margin-left: -15px;
+	margin-top: -15px;
+	line-height: 30px;
+	width: 30px;
+	height: 30px;
+}
+
+.mapplic-pin.pin-xl {
+	border-radius: 50%;
+	margin-left: -20px;
+	margin-top: -20px;
+	line-height: 40px;
+	width: 40px;
+	height: 40px;
+}
+
+.mapplic-pin.pin-pulse:before {
+	content: '';
+	border: 2px solid #888;
+	border-radius: 30px;
+	height: inherit;
+	width: inherit;
+	top: -2px;
+	left: -2px;
+	position: absolute;
+	animation: pulsate 1.8s ease-out;
+	animation-iteration-count: infinite;
+	animation-delay: 1s;
+	opacity: 0;
+	box-sizing: content-box;
+}
+
+@-webkit-keyframes pulsate {
+	0% {-webkit-transform: scale(1, 1); opacity: 0.0;}
+	25% {opacity: 0.5; }
+	50% {-webkit-transform: scale(1.6, 1.6); opacity: 0.0;}
 }
 
 /* Minimap */
 .mapplic-minimap {
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-radius: 2px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
 	position: absolute;
-	width: 140px;
 	margin: 10px;
 	bottom: 0;
 	right: 0;
@@ -209,6 +365,8 @@
 	-ms-user-select: none;
 	user-select: none;
 }
+
+.mapplic-minimap-layer { line-height: 0; }
 
 .mapplic-minimap img {
 	width: 100%;
@@ -228,35 +386,51 @@
 	opacity: 1;
 	top: 0;
 	left: 0;
+}
+
+.mapplic-clip-transition {
 	-webkit-transition: clip 0.1s;
 	-moz-transition: clip 0.1s;
 	transition: clip 0.1s;
 }
 
 .mapplic-minimap-background {
+	width: 140px !important;
 	-webkit-filter: blur(2px);
 }
 
-/* Clear Button */
-.mapplic-clear-button {
+/* UI Buttons */
+.mapplic-button {
 	background-color: #fff;
-	background-image: url(images/reset.png);
-	background-size: 16px 16px;
 	background-repeat: no-repeat;
 	background-position: center;
 	border: 1px solid #eee;
 	border-bottom: 1px solid #ddd;
-	border-radius: 3px;
-	margin: 10px;
+	border-radius: 2px;
 	width: 28px;
 	height: 28px;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+
+	-webkit-transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	transition: background-color 0.2s;
 }
 
-.mapplic-clear-button:active {
-	background-color: #eee;
+.mapplic-container > .mapplic-button {
+	position: absolute;
+	margin: 10px;
+} 
+
+.mapplic-button:active {
+	background-color: #f8f8f8;
+}
+
+/* Clear Button */
+.mapplic-clear-button {
+	background-image: url(../images/reset.svg);
+	background-size: 16px 16px;
+	display: none;
+	bottom: 69px;
+	left: 0;
 }
 
 /* Zoom Buttons */
@@ -264,28 +438,11 @@
 	margin: 10px;
 	position: absolute;
 	left: 0;
-	bottom: 40px;
+	bottom: 0;
 }
 
 .mapplic-zoom-buttons a {
-	background-color: #fff;
-	background-repeat: no-repeat;
-	background-position: center;
-	border: 1px solid #eee;
-	border-bottom: 1px solid #ddd;
-	color: #fff !important;
 	display: block;
-	font-size: 14px;
-	font-weight: bold;
-	cursor: pointer;
-	text-align: center;
-	line-height: 24px;
-	width: 28px;
-	height: 28px;
-}
-
-.mapplic-zoom-buttons a:active {
-	background-color: #f4f4f4;
 }
 
 .mapplic-zoom-buttons a.mapplic-disabled {
@@ -294,37 +451,52 @@
 }
 
 a.mapplic-zoomin-button {
-	background-image: url(images/plus.png);
+	background-image: url(../images/plus.svg);
 	background-size: 10px 10px;
-	border-radius: 3px 3px 0 0;
+	border-radius: 2px 2px 0 0;
 }
 
 a.mapplic-zoomout-button {
-	background-image: url(images/minus.png);
+	background-image: url(../images/minus.svg);
 	background-size: 10px 10px;
-	border-radius: 0 0 3px 3px;
+	border-radius: 0 0 2px 2px;
 	border-top: none;
 }
 
-/* Fullscreen Button */
+/* Fullscreen */
+.mapplic-fullscreen {
+	background-color: rgba(255, 255, 255, 0.9);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100% !important;
+	z-index: 99999;
+}
+
 .mapplic-fullscreen-button {
-	background-color: #fff;
-	background-image: url(images/fullscreen.png);
-	background-repeat: no-repeat;
-	background-position: center;
-	border: 1px solid #eee;
-	border-bottom: 1px solid #ddd;
-	border-radius: 2px;
-	margin: 10px;
-	width: 28px;
-	height: 28px;
-	position: absolute;
+	background-image: url(../images/fullscreen.svg);
+	background-size: 14px 14px;
 	top: 0;
 	left: 0;
 }
 
+.mapplic-fullscreen .mapplic-fullscreen-button {
+	background-image: url(../images/fullscreen-exit.svg);
+}
+
+.mapplic-fullscreen .mapplic-container {
+	width: 80%;
+}
+
+.mapplic-fullscreen .mapplic-sidebar {
+	width: 20%;
+}
+
 /* Levels */
 .mapplic-levels {
+	border-bottom: 1px solid #eee;
+	border-radius: 2px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -333,9 +505,7 @@ a.mapplic-zoomout-button {
 }
 
 .mapplic-levels > * {
-	border: 1px solid #eee;
 	display: block;
-	width: 100%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -343,21 +513,27 @@ a.mapplic-zoomout-button {
 
 .mapplic-levels-select {
 	background-color: #fff;
-	border-top: none;
+	border: none;
+	border-radius: 0;
 	color: #666;
 	margin: 0;
-	padding: 6px 2px;
-	font-size: 14px;
+	padding: 10px 6px;
+	margin-left: 20px;
+	font-size: 13px;
+	font-weight: 400;
 	outline: none;
+	-webkit-appearance: none;
 }
 
 .mapplic-levels a {
 	background-color: #fff;
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: 8px 4px;
 	cursor: pointer;
-	height: 24px;
-	width: 100%;
+	height: 50%;
+	width: 20px;
+	position: absolute;
 }
 
 .mapplic-levels a:active {
@@ -365,16 +541,12 @@ a.mapplic-zoomout-button {
 }
 
 .mapplic-levels .mapplic-levels-up {
-	background-image: url(images/arrow-up.png);
-	background-size: 8px 4px;
-	border-radius: 3px 3px 0 0;
+	background-image: url(../images/arrow-up.svg);
 }
 
 .mapplic-levels .mapplic-levels-down {
-	background-image: url(images/arrow-down.png);
-	background-size: 8px 4px;
-	border-top: none;
-	border-radius: 0 0 3px 3px;
+	background-image: url(../images/arrow-down.svg);
+	bottom: 0;
 }
 
 .mapplic-levels a.mapplic-disabled {
@@ -384,15 +556,10 @@ a.mapplic-zoomout-button {
 
 /* Sidebar */
 .mapplic-sidebar {
-	background-color: #f8f8f8;
 	width: 30%;
 	height: 100%;
 	float: left;
 	position: relative;
-}
-
-:-webkit-full-screen .mapplic-sidebar {
-	width: 20%;
 }
 
 /* Search */
@@ -410,18 +577,18 @@ a.mapplic-zoomout-button {
 }
 
 .mapplic-search-input {
-	background-image: url(images/viewer.png);
-	background-size: 17px 16px;
-	background-repeat: no-repeat;
-	background-position: 8px;
+	background-image: url(../images/magnifier.svg) !important;
+	background-size: 16px 16px !important;
+	background-repeat: no-repeat !important;
+	background-position: 8px !important;
 	border: 2px solid #eee;
-	border-radius: 2px;
-	font-size: 14px;
+	border-radius: 0;
+	font-size: 14px !important;
 	font-family: inherit;
 	line-height: 20px;
-	height: 38px;
-	margin: 0;
-	padding: 8px 32px;
+	height: 38px !important;
+	margin: 0 !important;
+	padding: 8px 32px !important;
 	width: 100%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -432,12 +599,14 @@ a.mapplic-zoomout-button {
 	transition: border-color 0.1s;
 }
 
+.mapplic-search-input::-ms-clear {display: none; width:0; height:0;}
+
 .mapplic-search-input:focus {
 	border-color: #6ed8dd;
 }
 
 .mapplic-search-clear {
-	background-image: url(images/cross.png);
+	background-image: url(../images/cross.svg);
 	background-size: 8px 8px;
 	background-repeat: no-repeat;
 	background-color: transparent;
@@ -463,7 +632,7 @@ a.mapplic-zoomout-button {
 	top: 100px;
 }
 
-/* List */
+/* Sidebar list */
 .mapplic-list-container {
 	padding-top: 67px;
 	height: 100%;
@@ -490,16 +659,18 @@ a.mapplic-zoomout-button {
 
 .mapplic-list-container li {
 	border-color: inherit;
+	margin: 0 !important;
 }
 
 .mapplic-list-category > a {
-	background-color: #888;
-	box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.05) inset;
-	color: #fff;
+	background-color: #bbb;
+	box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.05) inset !important;
+	color: #fff !important;
 	display: block;
 	font-size: 14px;
 	line-height: 26px;
 	padding: 10px 12px;
+	text-decoration: none;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -510,10 +681,26 @@ a.mapplic-zoomout-button {
 	border-bottom: 2px solid #eee !important;
 }
 
-.mapplic-list-thumbnail {
-	border-radius: 2px;
-	float: left;
+.mapplic-thumbnail {
+	border-radius: 0px !important;
+	box-shadow: none !important;
 	margin-right: 10px;
+	float: left;
+	width: 50px;
+	max-height: 50px;
+}
+
+.mapplic-thumbnail-placeholder {
+	background-color: #eee;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 34px;
+	padding: 8px 4px;
+	width: 50px;
+	height: 50px;
+	text-align: center;
 }
 
 .mapplic-list-category > a .mapplic-list-count {
@@ -523,10 +710,10 @@ a.mapplic-zoomout-button {
 	font-size: 12px;
 	font-weight: bold;
 	line-height: 20px;
-	padding: 0 6px;
 	margin-left: 10px;
-	text-align: center;
 	margin-top: 4px;
+	padding: 0 6px;
+	text-align: center;
 	-webkit-transition: border-radius 0.2s;
 	-moz-transition: border-radius 0.2s;
 	transition: border-radius 0.2s;
@@ -535,7 +722,11 @@ a.mapplic-zoomout-button {
 
 .mapplic-list-location {
 	border-bottom: 1px solid #eee;
-	margin: 0;
+	margin: 0 !important;
+}
+
+.mapplic-list-location[data-location=init] {
+	display: none !important;
 }
 
 .mapplic-list-location > a {
@@ -544,10 +735,16 @@ a.mapplic-zoomout-button {
 	display: block;
 	font-size: 14px;
 	padding: 10px;
-	min-height: 50px;
-	-webkit-transition: border 0.2s;
-	-moz-transition: border 0.2s;
-	transition: border 0.2s;
+	text-decoration: none;
+	-webkit-transition: border 0.1s;
+	-moz-transition: border 0.1s;
+	transition: border 0.1s;
+}
+
+.mapplic-list-location > a:after {
+	content: '';
+	display:block;
+	clear:both;
 }
 
 .mapplic-list-location > a:hover {
@@ -557,14 +754,16 @@ a.mapplic-zoomout-button {
 }
 
 .mapplic-list-location h4 {
-	color: #444;
+	color: #242424;
 	font-size: 16px;
 	font-weight: normal;
-	margin: 4px 0 8px 0;
-	text-align: left;
+	line-height: 18px;
+	margin: 4px 0 !important;
+	padding: 0;
+	clear: none;
 }
 
-.mapplic-list-location span { /* 42 -20 13 30*/
+.mapplic-list-location span {
 	color: #bbb;
 	font-size: 13px;
 	font-weight: normal;
@@ -573,10 +772,9 @@ a.mapplic-zoomout-button {
 /* Tooltip */
 .mapplic-tooltip {
 	background-color: #fff;
-	border-radius: 2px;
-	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 	display: none;
-	max-width: 260px;
+	max-width: 300px;
 	min-width: 120px;
 	margin-top: -76px;
 	padding: 16px;
@@ -588,9 +786,11 @@ a.mapplic-zoomout-button {
 
 .mapplic-tooltip-title {
 	color: #333;
-	font-size: 20px;
+	display: inline-block;
+	font-size: 18px;
 	font-weight: normal;
-	margin: 0 30px 12px 0;
+	line-height: 20px;
+	margin: 0 12px 0 0 !important;
 }
 
 .mapplic-hovertip {
@@ -600,35 +800,28 @@ a.mapplic-zoomout-button {
 }
 
 .mapplic-hovertip .mapplic-tooltip-title {
-	margin: 0;
+	margin: 0 !important;
 	font-size: 16px;
 	line-height: 24px;
 	text-align: center;
 }
 
-
-.mapplic-bottom .mapplic-tooltip-triangle {
-	border-color: transparent transparent #fff transparent;
-	border-width: 0 7px 8px 7px;
-	top: 0;
-	margin-top: -8px;
-}
-
 .mapplic-tooltip-content {
 	max-height: 160px;
 	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
-.mapplic-tooltip-content p {
-	margin-top: 0;
+.mapplic-tooltip p {
+	margin-bottom: 0;
+	margin: 13px 0 0 0;
 }
 
-.mapplic-tooltip-image {
-	width: 46%;
-	height: 100%;
-	/*margin: 5px 20px 5px 0;*/
-	margin: -16px 16px -16px -16px;
-	float: left;
+.mapplic-tooltip .mapplic-thumbnail {
+	border-radius: 50% !important;
+	width: 48px;
+	height: 48px;
+	margin-right: 12px;
 }
 
 .mapplic-tooltip-description,
@@ -638,21 +831,23 @@ a.mapplic-zoomout-button {
 	line-height: 20px;
 }
 
-.mapplic-tooltip-link {
+.mapplic-popup-link {
 	background-color: #6CB5F4;
-	border-radius: 2px;
+	border-radius: 0;
 	color: #fff !important;
 	float: right;
 	font-size: 14px;
-	line-height: 32px;
-	padding: 0 12px;
-	margin-top: 10px;
+	font-weight: 600;
+	line-height: 28px;
+	padding: 0 10px;
+	margin-top: 12px;
+	text-decoration: none;
 	-webkit-transition: background-color 0.2s;
 	-moz-transition: background-color 0.2s;
 	transition: background-color 0.2s;
 }
 
-.mapplic-tooltip-link:hover {
+.mapplic-popup-link:hover {
 	background-color: #888;
 }
 
@@ -661,18 +856,19 @@ a.mapplic-zoomout-button {
 }
 
 .mapplic-tooltip-close {
-	background-image: url(images/cross.png);
+	background-image: url(../images/cross.svg);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 8px 8px;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-	float: right;
-	margin: -10px -14px 0 0;
-	padding: 10px 12px;
-	width: 10px;
-	height: 10px;
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	padding: 8px;
+	width: 8px;
+	height: 8px;
 	opacity: 0.5;
 	-webkit-transition: opacity 0.2s;
 	-moz-transition: opacity 0.2s;
@@ -684,7 +880,7 @@ a.mapplic-zoomout-button {
 }
 
 .mapplic-tooltip-triangle {
-	border-color: #fff transparent transparent transparent;
+	border-color: #fff transparent transparent transparent !important;
 	border-style: solid;
 	border-width: 8px 7px 0 7px;
 	width: 0;
@@ -699,49 +895,77 @@ a.mapplic-zoomout-button {
 	transition: left 0.1s;
 }
 
-/* Tooltip down */
-.mapplic-tooltip-down .mapplic-tooltip-triangle {
+.mapplic-bottom .mapplic-tooltip-triangle {
+	border-color: transparent transparent #fff transparent !important;
 	border-width: 0 7px 8px 7px;
-	border-color: transparent transparent #fff transparent;
 	top: 0;
 	margin-top: -8px;
 }
 
-/* Coordinates */
-.mapplic-coordinates {
-	background-color: rgba(255, 255, 255, 0.9);
+/* Lightbox */
+.mapplic-lightbox-title {
 	color: #333;
-	position: absolute;
-	margin: 10px;
-	margin-left: -80px;
-	padding: 4px 6px;
-	font-size: 14px;
-	top: 0;
-	left: 50%;
-	pointer-events: none;
+	margin-top: 0;
+	margin-bottom: 20px;
 }
+
+.mapplic-lightbox {
+	background-color: #fff;
+	position: relative;
+	padding: 20px;
+	width: auto;
+	max-width: 500px;
+	margin: 20px auto;
+}
+
+.mapplic-lightbox:after {
+	content: '';
+	display:block;
+	clear:both;
+}
+
+.mapplic-popup-image {
+	outline: none;
+}
+
+/* Lightbox animation */
+.mfp-fade.mfp-bg {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out;
+	-moz-transition: all 0.15s ease-out;
+	transition: all 0.15s ease-out;
+}
+
+.mfp-fade.mfp-bg.mfp-ready { opacity: 0.8; }
+.mfp-fade.mfp-bg.mfp-removing { opacity: 0; }
+
+.mfp-fade.mfp-wrap .mfp-content {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out;
+	-moz-transition: all 0.15s ease-out;
+	transition: all 0.15s ease-out;
+}
+
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content { opacity: 1; }
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content { opacity: 0; }
 
 /* Responsive layout */
 @media all and (max-width: 667px) {
 	.mapplic-container,
 	.mapplic-sidebar {
-		width: 100%;
+		width: 100% !important;
 	}
 
 	.mapplic-tooltip {
 		max-width: 240px;
 	}
 
-	.mapplic-minimap {
-		width: 120px;
+	.mapplic-minimap-background {
+		width: 100px !important;
 	}
 
 	.mapplic-element {
 		height: auto !important;
-	}
-
-	.mapplic-fullscreen-button {
-		display: none;
 	}
 
 	.mapplic-search-form {
@@ -749,50 +973,14 @@ a.mapplic-zoomout-button {
 	}
 }
 
-/* RETINA */
+/* Retina */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-	.mapplic-search-clear,
-	.mapplic-tooltip-close {
-		background-image: url(images/cross@2x.png);
-	}
-
-	.mapplic-levels .mapplic-levels-up {
-		background-image: url(images/arrow-up@2x.png);
-	}
-
-	.mapplic-levels .mapplic-levels-down {
-		background-image: url(images/arrow-down@2x.png);
-	}
-
-	a.mapplic-zoomin-button {
-		background-image: url(images/plus@2x.png);
-	}
-
-	a.mapplic-zoomout-button {
-		background-image: url(images/minus@2x.png);
-	}
-
-	.mapplic-search-input {
-		background-image: url(images/viewer@2x.png);
-	}
-
-	.mapplic-pin { background-image: url(images/pin@2x.png); }
-	.mapplic-pin.orange { background-image: url(images/pin-orange@2x.png); }
-	.mapplic-pin.yellow { background-image: url(images/pin-yellow@2x.png); }
-	.mapplic-pin.green { background-image: url(images/pin-green@2x.png); }
-	.mapplic-pin.blue { background-image: url(images/pin-blue@2x.png); }
-	.mapplic-pin.purple { background-image: url(images/pin-purple@2x.png); }
-
-	.mapplic-pin.iconpin { background-image: url(images/pin-large@2x.png); }
-	.mapplic-pin.iconpin.orange { background-image: url(images/pin-orange-large@2x.png); }
-	.mapplic-pin.iconpin.yellow { background-image: url(images/pin-yellow-large@2x.png); }
-	.mapplic-pin.iconpin.green { background-image: url(images/pin-green-large@2x.png); }
-	.mapplic-pin.iconpin.blue { background-image: url(images/pin-blue-large@2x.png); }
-	.mapplic-pin.iconpin.purple { background-image: url(images/pin-purple-large@2x.png); }
-
-	.mapplic-clear-button {
-		background-image: url(images/reset@2x.png);
-	}
+	.mapplic-pin { background-image: url(../images/pin@2x.png); }
+	.mapplic-pin.orange { background-image: url(../images/pin-orange@2x.png); }
+	.mapplic-pin.yellow { background-image: url(../images/pin-yellow@2x.png); }
+	.mapplic-pin.green { background-image: url(../images/pin-green@2x.png); }
+	.mapplic-pin.blue { background-image: url(../images/pin-blue@2x.png); }
+	.mapplic-pin.purple { background-image: url(../images/pin-purple@2x.png); }
 }
 
 /* Map */
@@ -805,25 +993,12 @@ a.mapplic-zoomout-button {
 	cursor: pointer;
 }
 
-.mapplic-active,
-a.mapplic-active > path,
-g.mapplic-active > * {
-	fill: #343F4B;
-	opacity: 1.0;
-}
-
 .mapplic-clickable:not(g),
 g.mapplic-clickable > * {
 	cursor: pointer;
-	opacity: 0.4;
 	-webkit-transition: opacity 0.2s;
 	-moz-transition: opacity 0.2s;
 	transition: opacity 0.2s;
-}
-
-.mapplic-clickable:not(g):hover,
-g.mapplic-clickable:hover > * {
-	opacity: 0.8;
 }
 
 .mapplic-map-image *[id^=nopointer] {
@@ -834,10 +1009,108 @@ g.mapplic-clickable:hover > * {
 	cursor: pointer;
 }
 
-/* Default color - Disable this if you want to use the colors from your SVG file! */
-/*
-.mapplic-clickable,
-g.mapplic-clickable > * {
-	fill: #4d5e6d;
+/* SKINS */
+/* mapplic-dark */
+.mapplic-dark .mapplic-tooltip {
+	background-color: #333;
 }
-*/
+
+.mapplic-dark .mapplic-tooltip-triangle {
+	border-color: #333 transparent transparent transparent !important;
+}
+
+.mapplic-dark .mapplic-bottom .mapplic-tooltip-triangle {
+	border-color: transparent transparent #333 transparent !important;
+}
+
+.mapplic-dark .mapplic-tooltip-title {
+	color: #fff;
+}
+
+.mapplic-dark .mapplic-tooltip-description,
+.mapplic-dark .mapplic-tooltip p {
+	color: #bbb;
+}
+
+.mapplic-dark .mapplic-tooltip-close {
+	background-image: url(../mapplic/../images/cross-light.svg) !important;
+}
+
+/* INTERACTIVE ELEMENTS */
+/* clickable elements */
+.mapplic-clickable:not(g),
+g.mapplic-clickable > * {
+	opacity: 0.4;
+	/*fill: #b7a6bd*/;
+}
+
+/* hovered elements */
+.mapplic-clickable:not(g):hover,
+g.mapplic-clickable:hover > * {
+	opacity: 0.8;
+}
+
+/* active elements */
+.mapplic-active,
+a.mapplic-active > path,
+g.mapplic-active > * {
+	opacity: 1.0 !important;
+}
+
+/* Mall example - Custom */
+#landmarks-ground .mapplic-clickable,
+#landmarks-underground .mapplic-clickable,
+#landmarks-level1 .mapplic-clickable {
+	opacity: 1 !important;
+}
+
+#landmarks-ground polygon.mapplic-active,
+#landmarks-ground path.mapplic-active {
+	fill: #ADDB2C;
+}
+
+#landmarks-underground polygon.mapplic-active,
+#landmarks-underground path.mapplic-active {
+	fill: #7EE0CD;
+}
+
+#landmarks-level1 polygon.mapplic-active,
+#landmarks-level1 path.mapplic-active {
+	fill: #F9684B;
+}
+
+/* CUSTOM STYLES */
+.mapplic-sidebar { /*float: right;*/ }
+.mapplic-pin.mapplic-active { /*background-color: #91bf39 !important; border-color: #91bf39 !important;*/ }
+
+.mapplic-tooltip { max-width: 300px; } 			/* tooltip width */
+.mapplic-tooltip-content { max-height: 160px; } /* tooltip height*/
+
+/* example custom pin */
+.mapplic-pin.my-new-pin { /* replace 'my-new-pin' with the name of your pin */
+	background-image: url(../images/my-new-pin.png); 	/* define the path to image file */
+	background-size: 20px 30px;
+	width: 20px;
+	height: 30px;
+	margin-left: -10px;	/* negative margins are used for */
+	margin-top: -15px;	/* defining the pin's origin */
+}
+
+.mapplic-pin.pin-quote {
+	background-image: url(../images/pin-quote.svg);
+	background-size: 18px 24px;
+	width: 18px;
+	height: 24px;
+	margin-left: -9px;
+	margin-top: -24px;
+}
+
+.no-fullscreen .mapplic-fullscreen-button {
+	display: none;
+}
+
+/* Resort */
+#mapplic-resort .mapplic-clickable,
+#mapplic-resort .mapplic-clickable > * {
+	opacity: 1 !important;
+}
