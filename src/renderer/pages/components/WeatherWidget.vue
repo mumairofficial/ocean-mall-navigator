@@ -10,7 +10,7 @@
       </div>
       
       <div class="bg-white p-4 flex items-center">
-        <div class="font-bold" style="font-size: 48px;">
+        <div class="font-bold" style="font-size: 26px;">
           {{currentWeather.main.temp}}°C
         </div>
         <div class="flex-1 ml-3 text-sm">
