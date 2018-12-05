@@ -19,20 +19,11 @@
       </div>
       
 
-      <div class="flex flex-col items-end justify-between">
-        <div class="">
-          <weather-widget></weather-widget>
-        </div>
+      <div class="flex flex-col items-end justify-between" style="width: 60%">
+        <weather-widget />
 
         <div class="text-right mt-6">
-          <div class="mb-2">Advertisement</div>
-          <div id="slider">
-            <img class="mySlides" style="width: 50%;" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/austin-fireworks.jpg" alt>
-            <!-- <img class="mySlides" style="width: 20%;" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/taj-mahal_copy.jpg" alt>
-            <img class="mySlides" style="width: 20%;" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ibiza.jpg" alt>
-            <img class="mySlides" style="width: 20%;" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ankor-wat.jpg" alt>
-            <img class="mySlides" style="width: 20%;" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/austin-fireworks.jpg" alt> -->
-          </div>
+          <advertisement />
         </div>
       </div>
 
@@ -47,28 +38,10 @@
   import WeatherWidget from './components/WeatherWidget';
   import HomeNavigationBar from './components/HomeNavigationBar';
   import AppFooter from './components/Footer';
+  import Advertisement from './components/Advertisement';
   export default {
     name: 'home-page',
-    components: { WeatherWidget, AppFooter, HomeNavigationBar },
-    created () {
-      // setTimeout(() => {
-      //   this.showDivs(1)
-      // }, 1000);
-    },
-    mounted () {
-    },
-    methods: {
-      showDivs (n) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        if (n > x.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";  
-        }
-        x[slideIndex-1].style.display = "block";  
-      }
-    }
+    components: { WeatherWidget, AppFooter, HomeNavigationBar, Advertisement },
   }
 </script>
 
