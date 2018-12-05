@@ -2,7 +2,7 @@
   <div class="mb-16">
 
     <div class="pt-8 mb-10">
-      <span class="text-4xl text-white">{{pageTitle}}</span>
+      <span class="text-4xl text-white">{{pageTitle}} / {{selectedCategory}}</span>
     </div>
 
     <div class="flex">
@@ -17,18 +17,28 @@
       </div>
 
       <div class="flex-1 overflow-y-auto" style="height: 70vh;">
-        <!-- {{selectedLocation}} -->
-        <div v-for="loc in selectedLocation" :key="loc.id" class="flex">
-          <div class="p-4 mb-4 bg-white rounded text-grey-darkest flex-row">
-            <div>
+
+        <div v-for="loc in selectedLocation" :key="loc.id">
+          <div class="p-4 mb-4 bg-white rounded text-grey-darkest flex flex-column">
+            <div class="mr-6 w-24 h-24">
               <img :src="loc.thumbnail" class="w-24 h-24" alt="">
             </div>
+
             <div>
-              <div>Title</div>
-              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat porro atque eius explicabo corrupti, ipsa quibusdam pariatur, velit necessitatibus quia reiciendis tenetur deserunt harum saepe, iste dignissimos voluptates recusandae odit.</div>
+              <div class="text-black font-bold text-xl mb-2">
+                {{loc.title}}
+                <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#{{selectedCategory}}</span>
+              </div>
+              <div class="text-grey-darker text-base">{{loc.description}}</div>
+
+              <div class="py-4">
+                <span class="inline-block bg-yellow-lighter rounded-full px-3 py-1 text-sm font-semibold text-yellow-darker mr-2">#{{loc.floor}}</span>
+              </div>
             </div>
+            
           </div>
         </div>
+
       </div>
     </div>
 
@@ -58,11 +68,13 @@ export default {
           this.categories = [...categories]
           this.locations = [...locations]
           this.selectedLocation = this._getLocationBy(categories[0].id)
+          this.selectedCategory = categories[0].title
         }
       )
     },
 
     onSelectCategory(category) {
+      this.selectedCategory = category.title;
       this.selectedLocation = this._getLocationBy(category.id);
     },
 
