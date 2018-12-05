@@ -6,7 +6,7 @@
     </video>
     
     <div class="content flex justify-between">
-      <div class="flex flex-col">
+      <div class="flex flex-col w-full">
         <div class="text-3xl text-grey-light">
           <div class="px-8 py-6">
             <logo />
@@ -18,7 +18,7 @@
         </div>
 
         <div class="mx-8 pt-12 flex flex-row">
-          <content-container sectionFilter="servce" themeAccent="bg-blue text-blue-darkest hover:bg-blue-light" />
+          <content-container sectionFilter="services" themeAccent="bg-blue text-blue-darkest hover:bg-blue-light" />
         </div>
       </div>
 

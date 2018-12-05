@@ -6,7 +6,7 @@
     </video>
     
     <div class="content flex justify-between">
-      <div class="flex flex-col">
+      <div class="flex flex-col w-full">
         <div class="text-3xl text-grey-light">
           <div class="px-8 py-6">
             <logo />
