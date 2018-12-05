@@ -14,11 +14,11 @@
         </div>
 
         <div class="mx-8 pt-12 flex flex-row">
-          <div class="text-4xl text-yellow-dark">Eat</div>
+          <div class="text-4xl text-white">Eat</div>
         </div>
 
         <div class="mx-8 pt-12 flex flex-row">
-          <content-container sectionFilter="eat" />
+          <content-container sectionFilter="eat" themeAccent="bg-orange text-orange-darkest hover:bg-orange-light" />
         </div>
       </div>
 

@@ -1,12 +1,17 @@
 <template>
   <div class="flex flex-row mb-16">
     <div class="pr-8 overflow-y-auto" style="width: 300px;">
-      {{categories}}
-
+      <!-- {{categories}} -->
+      <div v-for="c in categories" :key="c.id"
+        class="w-full p-4 mb-2 rounded font-bold cursor-pointer"
+        :class="themeAccent"
+        @click="onSelectCategory(c)">
+        {{c.title}}
+      </div>
     </div>
 
     <div class="flex-1 overflow-y-auto">
-      {{locations}}
+      {{selectedLocation}}
     </div>
     <div>
     </div>
@@ -22,7 +27,8 @@ export default {
   },
   
   data: () => ({
-    resp: null,
+    selectedCategory: null,
+    selectedLocation: null,
     categories: null,
     locations: null
   }),
@@ -34,11 +40,18 @@ export default {
           const {categories, locations} = data;
           this.categories = [...categories]
           this.locations = [...locations]
+          this.selectedLocation = [...this.locations[0]]
         }
       )
+    },
+
+    onSelectCategory(category) {
+      this.selectedLocation = this.locations.filter(loc => loc.category === category.id)
+      console.log(this.locations)
+      console.log(this.selectedLocation)
     }
   },
 
-  props: [ 'sectionFilter' ]
+  props: [ 'sectionFilter', 'themeAccent' ]
 }
 </script>

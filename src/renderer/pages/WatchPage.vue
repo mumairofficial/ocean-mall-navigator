@@ -14,11 +14,11 @@
         </div>
 
         <div class="mx-8 pt-12 flex flex-row">
-          <div class="text-4xl text-yellow-dark">Watch</div>
+          <div class="text-4xl text-white">Watch</div>
         </div>
 
         <div class="mx-8 pt-12 flex flex-row">
-          <content-container sectionFilter="watch" />
+          <content-container sectionFilter="watch" themeAccent="bg-red text-red-darkest hover:bg-red-light" />
         </div>
       </div>
 

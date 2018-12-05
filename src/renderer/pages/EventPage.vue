@@ -14,11 +14,11 @@
         </div>
 
         <div class="mx-8 pt-12 flex flex-row">
-          <div class="text-4xl text-yellow-dark">Events</div>
+          <div class="text-4xl text-white">Events</div>
         </div>
 
         <div class="mx-8 pt-12 flex flex-row">
-          <content-container sectionFilter="events" />
+          <content-container sectionFilter="events" themeAccent="bg-purple text-purple-darkest hover:bg-purple-light" />
         </div>
       </div>
 
