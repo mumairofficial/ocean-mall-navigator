@@ -5,21 +5,17 @@
       Your browser does not support HTML5 video.
     </video>
     
-    <div class="content flex justify-between">
-      <div class="flex flex-col w-full">
-        <div class="text-3xl text-grey-light">
-          <div class="px-8 py-6">
-            <logo />
-          </div>
+    <div class="content justify-between">
+      <div class="">
+        <div class="px-8 py-6">
+          <logo />
         </div>
 
-        <div class="mx-8 pt-12 flex flex-row">
-          <div class="text-4xl text-white">Events</div>
-        </div>
-
-        <div class="mx-8 pt-12 flex flex-row">
-          <content-container sectionFilter="events" themeAccent="bg-purple text-purple-darkest hover:bg-purple-light" />
-        </div>
+        <content-container 
+            class="mx-8"
+            sectionFilter="events" 
+            themeAccent="bg-purple text-purple-darkest hover:bg-purple-light"
+            pageTitle="Events" />
       </div>
 
       <div style="position: fixed; bottom: 15px;" class="text-center w-full">
