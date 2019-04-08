@@ -1,9 +1,9 @@
 {
   "name": "ocean-mall-navigator",
-  "version": "0.0.1",
+  "version": "0.10.1",
   "author": "mumair <mumairofficial@gmail.com>",
   "description": "Inside navigator and events broad caster",
-  "license": null,
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
